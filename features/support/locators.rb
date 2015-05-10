@@ -6,8 +6,4 @@ module Buttons
   PLACE_ORDER = "Place Order"
   VIEW_DETAILS = "View Details"
 
-  def place_order
-    "Place Order"
-  end
-
 end

@@ -67,3 +67,7 @@ When /^I should see "([^"]*)" as the cart total$/ do |total|
   #@cart.cart_total.should == total
 
 end
+When(/^I complete the adoption with:$/) do |table|
+  # table is a | Cheezy | 123 Main Street | cheezy@example.com | Check |
+  on_page(CheckoutPage).checkout(table.hashes.first)
+end
