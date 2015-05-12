@@ -3,3 +3,7 @@ checkout_page:
  address: ~street_address
  email: ~email_address
  pay_type: Check
+
+admin_user:
+  username: admin
+  password: password

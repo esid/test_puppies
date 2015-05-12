@@ -16,17 +16,17 @@ class HomePage
 
  def select_puppy_number(name = 'Brook')
    index = puppy_index_for(name)
-   button_element(:value =>   VIEW_DETAILS, :index => index ).click
- end
-
-  private
-
- def puppy_index_for(name)
-  PUPPY_LOOKUP[name]
+   button_element(:value => VIEW_DETAILS, :index => index ).click
  end
 
   def select_puppy(name = 'Brook')
      index = puppy_index_for(name)
-     button_element(:value => 'View Details', :index => index).click
+     button_element(:value => VIEW_DETAILS, :index => index).click
+  end
+
+  private
+
+  def puppy_index_for(name)
+    PUPPY_LOOKUP[name]
   end
 end

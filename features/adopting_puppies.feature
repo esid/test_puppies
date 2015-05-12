@@ -47,3 +47,8 @@ Feature: Adopting puppies
       And click the Complete the Adoption button
       And complete the adoption
       Then should see "Thank you for adopting a puppy!"
+
+  Scenario: Verify message when adoption is processed
+    Given have a pending adoption for "Tom Jones"
+    When  process the adoption
+    Then should see "Please thank Tom Jones for the order!"

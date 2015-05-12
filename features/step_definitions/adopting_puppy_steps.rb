@@ -95,3 +95,17 @@ end
 Then(/^should see the error message "([^"]*)"$/) do |message|
   @current_page.should have_error_message message
 end
+
+When(/^process the adoption$/) do
+  visit_page(LoginPage)
+  on_page(LoginPage).login_to_system
+  on_page(AdminPage).adoptions
+  on_page(AdminPage).process_adoption_for "Randy"
+
+end
+Given(/^have a pending adoption for "([^"]*)"$/) do |name|
+  on_page(HomePage).select_puppy
+  on_page(DetailsPage).add_to_cart
+  on_page(ShoppingCartPage).proceed_to_checkout
+  on_page(CheckoutPage).checkout('name' => name)
+end

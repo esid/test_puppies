@@ -5,5 +5,6 @@ module Buttons
   COMPLETE_ADOPTION = "Complete the Adoption"
   PLACE_ORDER = "Place Order"
   VIEW_DETAILS = "View Details"
+  PROCESS_PUPPY = "Process Puppy"
 
 end
