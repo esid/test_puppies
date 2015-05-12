@@ -26,7 +26,6 @@ Feature: Adopting puppies
    And select "<pay_type>" from the pay with dropdown
    And click the Place Order button
    Then should see "Thank you for adopting a puppy!"
-
   Examples:
   | dog  | name | address | email | pay_type |
   | Brook | Cheezy | 123 Main St | cheezy@example.com| Credit card |

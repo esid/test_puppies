@@ -1,5 +1,4 @@
 
-
 class ShoppingCartPage
   include PageObject
   include Buttons

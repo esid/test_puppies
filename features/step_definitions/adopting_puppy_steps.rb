@@ -79,17 +79,21 @@ When(/^complete the adoption$/) do
 end
 
 When /^complete the adoption of a puppy$/ do
+=begin
    on_page(HomePage).select_puppy
    on_page(DetailsPage).add_to_cart
    on_page(ShoppingCartPage).proceed_to_checkout
-   on_page(CheckoutPage).checkout
+=end
+   navigate_to(CheckoutPage).checkout
 end
 
 When /^checkout leaving the name field blank/ do
+=begin
   on_page(HomePage).select_puppy_number
   on_page(DetailsPage).add_to_cart
   on_page(ShoppingCartPage).proceed_to_checkout
-  on_page(CheckoutPage).checkout('name' => '')
+=end
+  navigate_to(CheckoutPage).checkout('name' => '')
 end
 
 Then(/^should see the error message "([^"]*)"$/) do |message|
@@ -104,8 +108,10 @@ When(/^process the adoption$/) do
 
 end
 Given(/^have a pending adoption for "([^"]*)"$/) do |name|
+=begin
   on_page(HomePage).select_puppy
   on_page(DetailsPage).add_to_cart
   on_page(ShoppingCartPage).proceed_to_checkout
-  on_page(CheckoutPage).checkout('name' => name)
+=end
+  navigate_to(CheckoutPage).checkout('name' => name)
 end

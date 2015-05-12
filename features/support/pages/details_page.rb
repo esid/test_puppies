@@ -1,3 +1,4 @@
+
 class DetailsPage
   include PageObject
   include Buttons
