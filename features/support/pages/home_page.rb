@@ -21,4 +21,9 @@ class HomePage
  def puppy_index_for(name)
   PUPPY_LOOKUP[name]
  end
+
+  def select_puppy(name = 'Brook')
+     index = puppy_index_for(name)
+     button_element(:value => 'View Details', :index => index).click
+  end
 end

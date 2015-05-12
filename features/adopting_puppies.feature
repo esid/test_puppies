@@ -32,3 +32,18 @@ Feature: Adopting puppies
   | Brook | Cheezy | 123 Main St | cheezy@example.com| Credit card |
   | Hanna | Joseph | 555 South St| joe@guru.com | Check |
   | Maggie Mae | Jared | 234 Leandog | doc@dev.com | Purchase order|
+
+
+  Scenario: Adopting a puppy using partial default data
+     When I click the View Details button for Brook
+     And I click the Adopt Me! button
+     And I click the Complete the Adoption button
+     And I complete the adoption using a Credit card
+     Then I should see "Thank you for adopting a puppy!"
+
+  Scenario: Adopting a puppy using all default data
+      When I click the View Details button for Brook
+      And I click the Adopt Me! button
+      And I click the Complete the Adoption button
+      And I complete the adoption
+      Then I should see "Thank you for adopting a puppy!"
