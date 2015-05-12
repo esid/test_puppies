@@ -1,4 +1,6 @@
 require_relative 'side_menu_panel'
+require_relative '../locators'
+
 
 class AdminPage
   include PageObject
