@@ -93,5 +93,5 @@ When /^checkout leaving the name field blank/ do
 end
 
 Then(/^should see the error message "([^"]*)"$/) do |message|
-  @current_page.error_messages.should include message
+  @current_page.should have_error_message message
 end
