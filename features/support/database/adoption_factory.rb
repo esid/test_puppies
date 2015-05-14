@@ -13,8 +13,10 @@ FactoryGirl.define do
 
   factory :adoption do
     association :order
-    Puppy.establish_connection(:adapter => 'sqlite3', :database => '../puppies/db/development.sqlite3' )
-    puppy Puppy.find_by_name('Hanna')
+    unless ENV["HEROKU"]
+      Puppy.establish_connection(:adapter => 'sqlite3', :database => '../puppies/db/development.sqlite3' )
+      puppy Puppy.find_by_name('Hanna')
+    end
   end
 
 end
