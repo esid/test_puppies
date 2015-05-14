@@ -13,7 +13,7 @@ FactoryGirl.define do
 
   factory :adoption do
     association :order
-    if ENV["DEFAULT"]
+    if ON_LOCAL
       Puppy.establish_connection(:adapter => 'sqlite3', :database => '../puppies/db/development.sqlite3' )
       puppy Puppy.find_by_name('Hanna')
     end

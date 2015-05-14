@@ -98,15 +98,11 @@ end
 Given(/^have a pending adoption for "([^"]*)"$/) do |name|
 
  if @current_page.browser.url.include? "heroku"
-   puts "Running on Heroku -- " + @current_page.browser.url
    navigate_to(CheckoutPage).checkout('name' => name)
  else
-   puts "Running on env -- " + @current_page.browser.url
+   puts "Running on local -- " + @current_page.browser.url
    order = build(:order, :name => name)
    create(:adoption, :order => order)
 end
-=begin
-  order = build(:order, :name => name)
-  create(:adoption, :order => order)
-=end
+
 end

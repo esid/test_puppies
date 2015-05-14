@@ -19,3 +19,4 @@ PageObject::PageFactory.routes = {
 }
 
 
+ON_LOCAL = ENV["LOCAL"]

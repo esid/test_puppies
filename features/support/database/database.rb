@@ -2,9 +2,6 @@ require 'active_record'
 require 'database_cleaner'
 require 'factory_girl'
 
-
-
-
 ActiveRecord::Base.establish_connection(
     :adapter => 'sqlite3',
     :database => '../puppies/db/development.sqlite3')
@@ -13,9 +10,9 @@ ActiveRecord::Base.establish_connection(
 DatabaseCleaner.strategy = :truncation, {:except => %w[puppies users]}
 
 Before do
-  DatabaseCleaner.start
+   DatabaseCleaner.start  if ON_LOCAL
 end
 
 After do
-  DatabaseCleaner.clean
+    DatabaseCleaner.clean if ON_LOCAL
 end
