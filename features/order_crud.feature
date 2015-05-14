@@ -1,3 +1,4 @@
+@local
 Feature: CRUD works for orders
 
   Scenario: Creating a new order in the database
