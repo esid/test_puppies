@@ -6,7 +6,8 @@ class LoginPage
   include SideMenuPanel
 
 
-  page_url "http://puppies.herokuapp.com/login"
+  page_url "#{FigNewton.base_url}/admin"
+
 
   text_field(:username, :id => 'name')
   text_field(:password, :id => 'password')
@@ -14,11 +15,8 @@ class LoginPage
 
 
   def login_to_system( creds = {})
-    populate_page_with data_for(:admin_user, creds)
+    self.username = FigNewton.admin_username
+    self.password = FigNewton.admin_password
     login
   end
-=begin
-    self.username = username
-    self.password = password
-=end
 end

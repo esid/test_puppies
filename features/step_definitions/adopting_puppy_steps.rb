@@ -10,12 +10,9 @@ end
 
 When(/^click the Adopt Me! button$/) do
   on_page(DetailsPage).add_to_cart
-  #@details.add_to_cart
-  #@cart = ShoppingCartPage.new(@browser)
-
 end
+
 When(/^click the Adopt Another Puppy button$/) do
-  #@cart.continue_adopting
   on_page(ShoppingCartPage).continue_adopting
 end
 
@@ -39,8 +36,6 @@ end
 
 When(/^click the Complete the Adoption button$/) do
   on_page(ShoppingCartPage).proceed_to_checkout
-  #@cart.proceed_to_checkout
-  #@checkout = CheckoutPage.new(@browser)
 end
 
 When(/^click the Place Order button$/) do
@@ -50,27 +45,20 @@ end
 ## Cart validation steps
 Then /^should see "([^"]*)" as the name for (line item \d+)$/ do |name, line_item|
   on_page(ShoppingCartPage).name_for_line_item(line_item).should include name
-  #cart_line_item(line_item.to_i)[1].text.should include name
-  #@cart.name_for_line_item(line_item.to_i).should include name
 end
 
 When /^should see "([^"]*)" as the subtotal for line item (\d+)$/ do |subtotal, line_item|
   on_page(ShoppingCartPage).subtotal_for_line_item(line_item.to_i).should == subtotal
-  #cart_line_item(line_item.to_i)[3].text.should == subtotal
-  #@cart.subtotal_for_line_item(line_item.to_i).should == subtotal
 end
-
 
 Then /^should see "([^"]*)" as the cart total$/ do |total|
   on_page(ShoppingCartPage).cart_total.should == total
-  #@browser.td(:class => 'total_cell').text.should == total
-  #@cart.cart_total.should == total
-
 end
 When(/^complete the adoption with:$/) do |table|
   # table is a | Cheezy | 123 Main Street | cheezy@example.com | Check |
   on_page(CheckoutPage).checkout(table.hashes.first)
 end
+
 When(/^complete the adoption using a Credit card$/) do
   on_page(CheckoutPage).checkout('pay_type' => 'Credit card')
 end
@@ -108,10 +96,17 @@ When(/^process the adoption$/) do
 
 end
 Given(/^have a pending adoption for "([^"]*)"$/) do |name|
+
+ if @current_page.browser.url.include? "heroku"
+   puts "Running on Heroku -- " + @current_page.browser.url
+   navigate_to(CheckoutPage).checkout('name' => name)
+ else
+   puts "Running on env -- " + @current_page.browser.url
+   order = build(:order, :name => name)
+   create(:adoption, :order => order)
+end
 =begin
-  on_page(HomePage).select_puppy
-  on_page(DetailsPage).add_to_cart
-  on_page(ShoppingCartPage).proceed_to_checkout
+  order = build(:order, :name => name)
+  create(:adoption, :order => order)
 =end
-  navigate_to(CheckoutPage).checkout('name' => name)
 end

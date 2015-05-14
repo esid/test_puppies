@@ -5,7 +5,7 @@ class HomePage
   include Buttons
   include SideMenuPanel
 
-  page_url "http://puppies.herokuapp.com"
+  page_url FigNewton.base_url
 
   PUPPY_LOOKUP = {
       "Brook" => 0,

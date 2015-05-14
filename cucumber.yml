@@ -1,2 +1,3 @@
-default: --no-source --color --format pretty
-html: --format pretty --format json --out report.json --color
+default: DEFAULT=default FIG_NEWTON_FILE=local.yml --no-source --color --format pretty
+heroku: HEROKU=heroku FIG_NEWTON_FILE=heroku.yml --no-source --color --format pretty
+html: FIG_NEWTON_FILE=heroku.yml --format pretty --format json --out report.json --color

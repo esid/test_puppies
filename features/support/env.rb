@@ -2,7 +2,12 @@ require 'rspec'
 require 'page-object'
 require 'data_magic'
 require 'require_all'
+require 'factory_girl'
+require 'fig_newton'
 
+World(PageObject::PageFactory)
+
+World(FactoryGirl::Syntax::Methods)
 
 require_all File.dirname(__FILE__) + '/pages'
 
@@ -13,4 +18,4 @@ PageObject::PageFactory.routes = {
                  [CheckoutPage, :checkout]],
 }
 
-World(PageObject::PageFactory)
+
